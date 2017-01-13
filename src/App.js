@@ -20,16 +20,30 @@ componentDidMount(){
 getAll() {
   axios.get("https://date-night-alive.firebaseio.com/.json?print=pretty")
   .then((res) => {
-    console.log(res.data)
-    let dates = res.data
+    let activities = res.data
+    console.log(activities)
+    let activitiesArr =[];
+    if (activities) {
+    activitiesArr = Object.keys(activities).map((id)=>{
+       const activity = activities[id]
+       console.log(activity)
+       return {
+        dates: activity,
+        key: id
+       }
+    })
+  }
+  console.log(activitiesArr)
+   this.setState({
+    dates: activitiesArr
+   })
 
-    let info = res.data.Date1.Activities
-    console.log(info)
-
-    let ActivitiesArr = Object.keys(info).map
-    console.log(ActivitiesArr)
+  })
+   .catch((error) => {
+    console.log(error);
   })
 }
+
 
 
 
@@ -40,11 +54,10 @@ getAll() {
     return (
       <div className="App">
         <div className="App-header">
-
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+
         </p>
       </div>
     );
