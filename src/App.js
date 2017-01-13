@@ -21,11 +21,12 @@ getAll() {
   axios.get("https://date-night-alive.firebaseio.com/.json?print=pretty")
   .then((res) => {
     let activities = res.data
-    console.log(activities)
+    //console.log(activities)
     let activitiesArr =[];
     if (activities) {
     activitiesArr = Object.keys(activities).map((id)=>{
        const activity = activities[id]
+       this.setState({activities: activity})
        console.log(activity)
        return {
         dates: activity,
@@ -33,7 +34,7 @@ getAll() {
        }
     })
   }
-  console.log(activitiesArr)
+  //console.log(activitiesArr)
    this.setState({
     dates: activitiesArr
    })
@@ -44,7 +45,13 @@ getAll() {
   })
 }
 
+postTweeds(){
+  const url = "https://date-night-alive.firebaseio.com/.json?print=pretty"
+  axios.post(url,{
 
+
+  })
+}
 
 
 
@@ -57,7 +64,7 @@ getAll() {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-
+           <input/>
         </p>
       </div>
     );
