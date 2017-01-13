@@ -11,6 +11,9 @@ class App extends Component {
       value: '',
     };
       this.getAll = this.getAll.bind(this);
+      this.postActivties = this.postActivties.bind(this);
+      this.createActivity =this.createActivity.bind(this);
+      this.handleChange = this.handleChange.bind(this);
   }
 
 componentDidMount(){
@@ -27,16 +30,16 @@ getAll() {
     activitiesArr = Object.keys(activities).map((id)=>{
        const activity = activities[id]
        this.setState({activities: activity})
-       console.log(activity)
+       //console.log(activity)
        return {
         dates: activity,
         key: id
        }
     })
   }
-  //console.log(activitiesArr)
-   this.setState({
-    dates: activitiesArr
+    console.log(activitiesArr)
+     this.setState({
+      dates: activitiesArr
    })
 
   })
@@ -45,29 +48,38 @@ getAll() {
   })
 }
 
-postTweeds(){
+postActivties(){
   const url = "https://date-night-alive.firebaseio.com/.json?print=pretty"
   axios.post(url,{
-
-
+   activities: this.state.activities
   })
+.then(() => {
+  this.getAll();
+  this.setState({value: ''})
+})
 }
 
+createActivity(event) {
+    event.preventDefault();
 
+    const activity = {
+      title: this.title.value,
+    }
+    this.addActivityForm.reset();
+    this.postActivties();
+  }
 
-
+handleChange(event){
+   this.setState({value: event.target.value})
+ }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-           <input/>
-        </p>
+              <input value={this.title} type="text" placeholder="Title" />
+              <button type="submit" onClick={(event) => this.createActivity(event)}>Add Activity</button>
       </div>
-    );
+    )
   }
 }
 
