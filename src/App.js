@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import ActivityFeed from './ActivityFeed';
 
 class App extends Component {
   constructor(){
@@ -9,11 +10,11 @@ class App extends Component {
       activities: [],
       dates: [],
       value: '',
+      date: [],
+      currentDate: {},
     };
       this.getAll = this.getAll.bind(this);
       this.postActivties = this.postActivties.bind(this);
-      this.createActivity =this.createActivity.bind(this);
-      this.handleChange = this.handleChange.bind(this);
   }
 
 componentDidMount(){
@@ -24,24 +25,18 @@ getAll() {
   axios.get("https://date-night-alive.firebaseio.com/.json?print=pretty")
   .then((res) => {
     let activities = res.data
-    //console.log(activities)
+    this.setState({date: activities})
+    console.log(activities)
     let activitiesArr =[];
-    if (activities) {
-    activitiesArr = Object.keys(activities).map((id)=>{
-       const activity = activities[id]
-       this.setState({activities: activity})
-       //console.log(activity)
-       return {
-        dates: activity,
-        key: id
+
+
        }
     })
   }
-    console.log(activitiesArr)
+     console.log(activitiesArr)
      this.setState({
       dates: activitiesArr
    })
-
   })
    .catch((error) => {
     console.log(error);
@@ -49,9 +44,17 @@ getAll() {
 }
 
 postActivties(){
+const activity = {
+      title: this.title.value,
+      time: this.time.value,
+      location: this.location.value
+  }
   const url = "https://date-night-alive.firebaseio.com/.json?print=pretty"
   axios.post(url,{
-   activities: this.state.activities
+   title: this.state.title
+   address: this.state.location
+   time: this.state.time
+
   })
 .then(() => {
   this.getAll();
@@ -59,25 +62,38 @@ postActivties(){
 })
 }
 
-createActivity(event) {
-    event.preventDefault();
-
-    const activity = {
-      title: this.title.value,
-    }
-    this.addActivityForm.reset();
-    this.postActivties();
-  }
-
 handleChange(event){
-   this.setState({value: event.target.value})
+   this.setState({
+    value: event.target.value
+  })
  }
+
+
+handleSubmit(event){
+  event.preventDefault();
+
+  const activity = {
+      title: this.title.value,
+      time: this.time.value,
+      location: this.location.value
+  }
+  this.postActivities();
+}
 
   render() {
     return (
       <div className="App">
-              <input value={this.title} type="text" placeholder="Title" />
-              <button type="submit" onClick={(event) => this.createActivity(event)}>Add Activity</button>
+              <form ref={(input) => this.addMessageForm = input} className="message-edit" onClick={(event) => this.createActivity(event)}>
+                    <input ref={(input) => this.title = input} type="text" placeholder="Title" />
+                    <input ref={(input) => this.time = input} type="text" placeholder="Time" />
+                    <textarea ref={(input) => this.location = input} placeholder="Location" ></textarea>
+                    <button type="submit">+ Add Activity</button>
+              </form>
+              <ActivityFeed
+               dates={this.state.dates}
+               date={this.state.date}
+               currentdate={this.state.currentDate}
+              />
       </div>
     )
   }
