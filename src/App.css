@@ -4,19 +4,26 @@
 
 body{
   margin: 0 auto;
+  height: 100%;
+  width: 100%;
 }
 
 .topL{
   position: absolute;
-  margin-top: 20px;
+  margin-top: -2%;
   margin-left: 270px;
-
 }
+
 
 .topR{
   position: absolute;
-  margin-top: 20px;
-  margin-left: 310px;
+  margin-top: 1%;
+  margin-left: 270px;
+  }
+
+  .topL{
+  position: absolute;
+  margin-right: 30px;
   }
 
 li{

@@ -1,36 +1,46 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Button } from 'react-bootstrap';
+
 
 
 
 class ActivityFeed extends Component {
+
+niteOut() {
+let dateTotal = 5;
+let begIndex = this.props.counter * dateTotal
+let endIndex = begIndex + dateTotal
+}
+
+
 
 render() {
 let activities = this.props.activities;
 let deleter = this.props.deleteActivity;
 let editer =this.props.newEditField;
 
+
 let activityList = activities.map(function(activity){
   return (
-        <li key={activity.key}>
+        <a href="#" key={activity.key} className="list-group-item list-group-item-info">
               <h3>{activity.activity.Activities.title}</h3>
-             <i className="fa fa-trash fa-2x" onClick={ () => {deleter(activity.key)}}></i>
-              <i className="fa fa-pencil-square-o fa-2x" onClick={ () => {editer(activity.key)}}></i>
+              <i className="fa fa-trash fa-2x pull-left topR" onClick={ () => {deleter(activity.key)}}></i>
+              <i className="fa fa-pencil-square-o fa-2x pull-left topL" onClick={ () => {editer(activity.key)}}></i>
               <h4>{activity.activity.Activities.time}</h4>
               <h4>{activity.activity.Activities.location}</h4>
-          </li>
+          </a>
     )
 })
+
 
   return (
     <div className="panel-group">
        <div className="panel panel-default">
-          <div id="listTitle" className="bg-primary text-white">Date It Manager</div>
+          <div id="listTitle" className="bg-primary text-white">Activities Manager</div>
              <div className="panel-body">
-                  <ul className="message-board">
+                  <div className="list-group">
                      {activityList}
-                  </ul>
+                  </div>
              </div>
         </div>
          <button onClick={this.props.onPrevious}>Previous</button>

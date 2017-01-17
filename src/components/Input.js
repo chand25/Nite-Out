@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 //import TimeSelect from './TimeSelect'
 
 
-
-
 class Input extends Component {
-
-
-
 
 render(){
 
@@ -19,7 +13,7 @@ render(){
                  <div className="panel-body">
                       <form ref="form" id="msg-form" className="form-inline" onSubmit={this.props.postActivityDB}>
                           <input className="form-control mr-sm-2" size="35" type="text" value={this.props.inputTitle} placeholder='Type of Activity: Title' onChange={this.props.Title}/>
-                          <select className="form-control" data-style="btn-primary" title="Choose a Time..." value={this.props.inputTime} onChange={this.props.Time}>
+                          <select size="1" required className="form-control" data-style="btn-primary" title="Choose a Time..." value={this.props.inputTime} onChange={this.props.Time}>
                                 <option>Choose a Time....</option>
                               <optgroup label="Wee Hours of the Morning">
                                     <option>0:00</option>

@@ -57,14 +57,17 @@ getActivities() {
        if (info) {
         activities = Object.keys(info).map((id) => {
             const activity = info[id];
-            //console.log(activity)
             return {
             activity,
             key: id
            }
         });
+
        }
          this.setState({activities});
+         let dates =  _.chunk(activities, 5)
+         console.log(dates)
+         this.setState({dates});
     })
   .catch((error) => {
     console.log(error);
@@ -112,8 +115,7 @@ handleEditClick(key){
 previousDate(){
   let currentDate = this.state.counter;
   this.setState({counter: currentDate - 1});
- console.log(this.state.counter)
-console.log(this.state.counter);
+  console.log(this.state.counter);
 }
 
 updateActivities(editkey){
@@ -139,8 +141,10 @@ axios.patch(`https://date-night-alive.firebaseio.com/${editkey}.json?print=prett
 
 deleteActivity(key){
   console.log(key);
+let precaution = confirm("Are you sure your plans have been cancelled? ")
   //each data record has its own unique end point
   //access the keys for each record
+if(precaution){
 axios.delete(`https://date-night-alive.firebaseio.com/${key}.json?print=pretty`)
 .then(() => {
     this.getActivities();
@@ -149,7 +153,7 @@ axios.delete(`https://date-night-alive.firebaseio.com/${key}.json?print=pretty`)
    .catch((error) => {console.log(error)
  })
 }
-
+}
 
 ///all the individual on change event for first form
  handleTitleChange(event){this.setState({value: event.target.value})}
@@ -224,6 +228,7 @@ render() {
                       changeTimeSelector={this.changeTimeSelector}
               />
              <ActivityFeed
+                   counter={this.state.counter}
                    activities={this.state.activities}
                    deleteActivity={this.deleteActivity}
                    newEditField={this.handleEditClick}
