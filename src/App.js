@@ -21,6 +21,7 @@ class App extends Component {
       editvalue: '',
       editTimeValue: '',
       editLocationValue: '',
+      counter: 0,
     };
     this.getActivities=this.getActivities.bind(this);
     this.postActivities=this.postActivities.bind(this);
@@ -34,6 +35,8 @@ class App extends Component {
     this.handleLocationChange=this.handleLocationChange.bind(this);
     this.handleEditTimeChange=this.handleEditTimeChange.bind(this);
     this.handleEditLocationChange=this.handleEditLocationChange.bind(this);
+    this.nextDate=this.nextDate.bind(this);
+    this.previousDate=this.previousDate.bind(this);
     //where we would bind functions */
   }
 
@@ -72,8 +75,8 @@ getActivities() {
 postActivities(){
      let newActivity ={
       title: this.state.value,
-      time: this.state.timevalue,
-      location: this.state.locationvalue,
+      time: this.state.time,
+      location: this.state.location,
      }
      const url = "https://date-night-alive.firebaseio.com/.json?print=pretty"
      axios.post(url, {
@@ -82,8 +85,8 @@ postActivities(){
     .then(() =>{
       this.getActivities();
       this.setState({value: '' })
-      this.setState({locationvalue: '' })
-      this.setState({timevalue: '' })
+      this.setState({location: '' })
+      this.setState({time: '' })
 
     })
     .catch((error) => {
@@ -100,7 +103,18 @@ handleEditClick(key){
   console.log(key);
 }
 
+ nextDate(){
+  let currentDate = this.state.counter;
+  this.setState({counter: currentDate +1});
+  console.log(this.state.counter);
+ }
 
+previousDate(){
+  let currentDate = this.state.counter;
+  this.setState({counter: currentDate - 1});
+ console.log(this.state.counter)
+console.log(this.state.counter);
+}
 
 updateActivities(editkey){
   let editActivity ={
@@ -139,10 +153,10 @@ axios.delete(`https://date-night-alive.firebaseio.com/${key}.json?print=pretty`)
 
 ///all the individual on change event for first form
  handleTitleChange(event){this.setState({value: event.target.value})}
- handleTimeChange(event){this.setState({timevalue: event.target.value})}
- handleLocationChange(event){this.setState({locationvalue: event.target.value})}
+ handleTimeChange(event){this.setState({time: event.target.value})}
+ handleLocationChange(event){this.setState({location: event.target.value})}
 
-//Edit Values
+//On change events for Edit Values
 handleChangeAgain(event){this.setState({editvalue: event.target.value})}
 handleEditTimeChange(event){this.setState({editTimeValue: event.target.value})}
 handleEditLocationChange(event){this.setState({editLocationValue: event.target.value})}
@@ -156,6 +170,7 @@ handleSubmit(event){
 render() {
      const isPressed = this.state.isPressed;
 
+//conditional rendering
   if (isPressed) {
     return(
           <div className="App">
@@ -203,13 +218,15 @@ render() {
                       Locale={this.handleLocationChange}
                       postActivityDB={this.handleSubmit}
                       inputTitle={this.state.value}
-                      inputTime={this.state.timevalue}
-                      inputLocale={this.state.locationvalue}
+                      inputTime={this.state.time}
+                      inputLocale={this.state.location}
               />
              <ActivityFeed
                    activities={this.state.activities}
                    deleteActivity={this.deleteActivity}
                    newEditField={this.handleEditClick}
+                   onNext={this.nextDate}
+                   onPrevious={this.previousDate}
               />
          </div>
       </div>

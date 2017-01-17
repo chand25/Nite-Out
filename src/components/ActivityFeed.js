@@ -21,7 +21,6 @@ let activityList = activities.map(function(activity){
     )
 })
 
-
   return (
     <div className="panel-group">
        <div className="panel panel-default">
@@ -32,6 +31,8 @@ let activityList = activities.map(function(activity){
                   </ul>
              </div>
         </div>
+         <button onClick={this.props.onPrevious}>Previous</button>
+         <button onClick={this.props.onNext}>Next</button>
     </div>
     );
   }
