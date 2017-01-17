@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { Button } from 'react-bootstrap';
+
 
 
 class ActivityFeed extends Component {
 
 render() {
-let activities = this.props.activities
-let deleter = this.props.deleteActivity
-let editer =this.props.newEditField
+let activities = this.props.activities;
+let deleter = this.props.deleteActivity;
+let editer =this.props.newEditField;
 
 let activityList = activities.map(function(activity){
   return (
-    <li key={activity.key}>
-          <h3>{activity.activity.Activities.title}</h3>
-           <i className="fa fa-trash pull-right" onClick={ () => {deleter(activity.key)}}></i>
-           <i className="fa fa-pencil pull-right" onClick={ () => {editer(activity.key)}}></i>
-          <h4>{activity.activity.Activities.time}</h4>
-          <h4>{activity.activity.Activities.location}</h4>
-      </li>
+        <li key={activity.key}>
+              <h3>{activity.activity.Activities.title}</h3>
+             <i className="fa fa-trash fa-2x" onClick={ () => {deleter(activity.key)}}></i>
+              <i className="fa fa-pencil-square-o fa-2x" onClick={ () => {editer(activity.key)}}></i>
+              <h4>{activity.activity.Activities.time}</h4>
+              <h4>{activity.activity.Activities.location}</h4>
+          </li>
     )
 })
 

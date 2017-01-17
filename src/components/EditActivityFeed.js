@@ -13,8 +13,6 @@ let activityList = activities.map(function(activity){
   return (
     <li key={activity.key}>
           <h3>{activity.activity.Activities.title}</h3>
-           <i className="fa fa-trash pull-right" onClick={ () => {deleter(activity.key)}}></i>
-           <i className="fa fa-pencil pull-right" onClick={ () => {editer(activity.key)}}></i>
           <h4>{activity.activity.Activities.time}</h4>
           <h4>{activity.activity.Activities.location}</h4>
       </li>

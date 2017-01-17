@@ -2,9 +2,27 @@
   text-align: center;
 }
 
+body{
+  margin: 0 auto;
+}
+
+.topL{
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 270px;
+
+}
+
+.topR{
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 310px;
+  }
+
 li{
   list-style: none;
   border-bottom: 2px solid blue;
+  text-align: center;
 }
 
 li:active{
@@ -16,6 +34,8 @@ h1{
   font-size: 16vw;
 
 }
+
+
 
 
 .emessage-board{

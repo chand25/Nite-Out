@@ -3,7 +3,7 @@ import axios from 'axios';
 import ActivityFeed from './components/ActivityFeed';
 import EditActivityFeed from './components/EditActivityFeed';
 import Input from './components/Input'
-import EditInput from './components/EditInput'
+import EditInput from './components/EditInput';
 import  _ from 'lodash';
 import './App.css';
 
@@ -212,6 +212,7 @@ render() {
               </div>
           </nav>
           <div className="container">
+
             <Input
                       Title={this.handleTitleChange}
                       Time={this.handleTimeChange}
@@ -220,6 +221,7 @@ render() {
                       inputTitle={this.state.value}
                       inputTime={this.state.time}
                       inputLocale={this.state.location}
+                      changeTimeSelector={this.changeTimeSelector}
               />
              <ActivityFeed
                    activities={this.state.activities}
