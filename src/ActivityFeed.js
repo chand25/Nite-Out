@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 
 class ActivityFeed extends Component{
 render() {
-   let datelist = Object.keys(this.props.date).map((date) => {
+   let datelist = Object.keys(this.props.date).map((date,i) => {
     return(
-      <li key={date.key}>{date}
+      <li key={i}>{date}
           <i className="fa fa-trash pull-right" onClick={ () => {this.props.deleter()}}></i>
           <i className="fa fa-pencil pull-right" onClick={ () => {this.props.newEditField()}}></i>
       </li>
