@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       activities: [],
       value: '',
+      dates: [],
       isPressed: false,
       editkey: '',
       location: '',
@@ -180,7 +181,7 @@ render() {
           <div className="App">
           <nav className="navbar navbar-inverse fixed-top ">
               <div className="container-fluid">
-                  <div className="bg-primary">
+                  <div className="bg-primary topheader">
                       <h1>Nite Out</h1>
                   </div>
               </div>
@@ -208,10 +209,10 @@ render() {
   }
    return(
      <div className="App">
-          <nav className="navbar navbar-inverse fixed-top ">
+          <nav className=" fixed-top topheader">
               <div className="container-fluid">
-                  <div className="bg-primary">
-                      <h1>Nite Out</h1>
+                  <div className="">
+
                   </div>
               </div>
           </nav>
@@ -234,6 +235,7 @@ render() {
                    newEditField={this.handleEditClick}
                    onNext={this.nextDate}
                    onPrevious={this.previousDate}
+                  dates={this.state.dates}
               />
          </div>
       </div>

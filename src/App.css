@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 body{
@@ -12,6 +13,21 @@ body{
   position: absolute;
   margin-top: -2%;
   margin-left: 270px;
+}
+
+.topheader{
+ height: 350px;
+ background-size: 55%;
+ background-attachment: fixed;
+ background-position: 50% 2.5%;
+ background-repeat: no-repeat;
+ background-image: url("./assets/nout2.jpg")
+}
+
+button{
+  background-color: teal;
+  color: white;
+  border-radius: 10px;
 }
 
 
@@ -28,7 +44,7 @@ body{
 
 li{
   list-style: none;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid black;
   text-align: center;
 }
 
@@ -39,17 +55,9 @@ li:active{
 h1{
   font-family: 'Luckiest Guy', cursive;
   font-size: 16vw;
-
 }
-
-
 
 
 .emessage-board{
   background-color: aqua;
-
-}
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

@@ -6,18 +6,15 @@ import _ from 'lodash';
 
 class ActivityFeed extends Component {
 
-niteOut() {
-let dateTotal = 5;
-let begIndex = this.props.counter * dateTotal
-let endIndex = begIndex + dateTotal
-}
-
 
 
 render() {
 let activities = this.props.activities;
 let deleter = this.props.deleteActivity;
 let editer =this.props.newEditField;
+let dates = this.props.dates;
+
+
 
 
 let activityList = activities.map(function(activity){
@@ -43,7 +40,7 @@ let activityList = activities.map(function(activity){
                   </div>
              </div>
         </div>
-         <button onClick={this.props.onPrevious}>Previous</button>
+         <button onClick={this.props.onPrevious}>Prev</button>
          <button onClick={this.props.onNext}>Next</button>
     </div>
     );
