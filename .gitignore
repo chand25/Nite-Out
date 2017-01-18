@@ -1,0 +1,20 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
+
+#js files
+old formulas.js
+old2.js
+old3.js
+
+# misc
+.DS_Store
+.env
+npm-debug.log
