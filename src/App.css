@@ -7,6 +7,10 @@ body{
   margin: 0 auto;
   height: 100%;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url("./assets/back1.jpg")
 }
 
 .topL{
@@ -17,15 +21,11 @@ body{
 
 .topheader{
  height: 350px;
- background-size: 55%;
- background-attachment: fixed;
- background-position: 50% 2.5%;
- background-repeat: no-repeat;
- background-image: url("./assets/nout2.jpg")
+
 }
 
 button{
-  background-color: teal;
+  background-color: navy;
   color: white;
   border-radius: 10px;
 }
@@ -52,11 +52,26 @@ li:active{
   background-color: teal;
 }
 
-h1{
-  font-family: 'Luckiest Guy', cursive;
-  font-size: 16vw;
+#listTitle{
+  font-size: 5vw;
+  color: black;
+  font-family: 'Mirza', cursive;
 }
 
+.App h1{
+  font-family: 'Codystar', cursive;
+  color: white;
+  font-size: 19vw;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink{
+    0%{color: rgba(255,255,255, 0.8); }
+  25%{color: rgba(248,248,248,1); }
+  50%{color: rgba(240,240,80,0.9); }
+  75%{color: rgba(224,4,224,0.9); }
+  100%{color: rgba(232,232,232, 0.8); }
+}
 
 .emessage-board{
   background-color: aqua;

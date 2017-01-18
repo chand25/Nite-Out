@@ -10,10 +10,18 @@ let activities = this.props.activities
 
 let activityList = activities.map(function(activity){
   return (
-    <li key={activity.key} className="list-group-item list-group-item-info">
-          <h3>{activity.activity.Activities.title}</h3>
-          <h4>{activity.activity.Activities.time}</h4>
-          <h4>{activity.activity.Activities.location}</h4>
+    <li key={activity.key} className="list-group-item list-group-item-action">
+      <div className="row">
+            <div className="col-3">
+                     <h3>{activity.activity.Activities.title}</h3>
+             </div>
+             <div className="col-2">
+                     <h4>{activity.activity.Activities.time}</h4>
+                   </div>
+              <div className="col-3">
+                      <h4>{activity.activity.Activities.location}</h4>
+                </div>
+            </div>
       </li>
     )
 })
@@ -33,4 +41,9 @@ let activityList = activities.map(function(activity){
     );
   }
 }
+
+EditActivityFeed.propTypes = {
+  activities: React.PropTypes.array.isRequired,
+
+};
 export default EditActivityFeed;

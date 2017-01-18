@@ -179,9 +179,9 @@ render() {
   if (isPressed) {
     return(
           <div className="App">
-          <nav className="navbar navbar-inverse fixed-top ">
+          <nav className="fixed-top topheader">
               <div className="container-fluid">
-                  <div className="bg-primary topheader">
+                  <div className="bg primary">
                       <h1>Nite Out</h1>
                   </div>
               </div>
@@ -209,10 +209,10 @@ render() {
   }
    return(
      <div className="App">
-          <nav className=" fixed-top topheader">
+          <nav className="fixed-top topheader">
               <div className="container-fluid">
-                  <div className="">
-
+                  <div className="bg primary">
+                       <h1>Nite Out</h1>
                   </div>
               </div>
           </nav>

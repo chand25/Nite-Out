@@ -20,4 +20,11 @@ render(){
     );
   }
 }
+
+EditInput.propTypes = {
+  activities: React.PropTypes.array.isRequired,
+  editLocationValue: React.PropTypes.string.isRequired,
+  writeEdits: React.PropTypes.func.isRequired,
+  updater: React.PropTypes.func.isRequired,
+};
 export default EditInput;
