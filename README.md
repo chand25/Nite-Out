@@ -39,14 +39,14 @@ Originally I wanted to build a nite-out application where you can schedule your 
 
 For this project, I have used the following technologies:
 
-*ReactJS
-*Firebase
-*Axios
-*Lodash
-*Vanilla Javacript
-*HTML
-*CSS
-*GitHub
+* ReactJS
+* Firebase
+* Axios
+* Lodash
+* Vanilla Javacript
+* HTML
+* CSS
+* GitHub
 
 ## Future Improvements (not in any particular order)
 
@@ -58,11 +58,11 @@ For this project, I have used the following technologies:
 
 
 ## Contributing
-*Stack Overflow 
-*W3 Schools
-*ReactJS Documentation
-*Lodash Documentation
-*These resources really helped with my syntax issues. 
+* Stack Overflow 
+* W3 Schools
+* ReactJS Documentation
+* Lodash Documentation
+These resources really helped with my syntax issues. 
 
 ##Authors
 Shantel Moore
